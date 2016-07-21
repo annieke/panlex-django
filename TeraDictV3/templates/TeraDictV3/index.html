@@ -1,0 +1,27 @@
+<!doctype html>
+<head>
+<title>TeraDict</title>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/json3/3.3.2/json3.min.js"></script>
+<script src="/static/teradict.js"></script>
+</head>
+<body>
+<h1>TeraDict</h1>
+
+<form onsubmit="findTranslation(); return false;" id="form">
+{% csrf_token %}
+	Translate: <input type="text" id ="word" name="word" placeholder="Your word" /> <br>
+	From <input type="text" id="lang1" list="inlang" class="lang" placeholder="eng-000" value="{{ inlang }}">
+	<datalist id="inlang">
+	{% include "TeraDictV3/options.html" %}
+	</datalist>
+	to <input type="text" id="lang2" list="outlang" class="lang" placeholder="eng-000" value="{{ outlang }}">
+	<datalist id="outlang">
+	{% include "TeraDictV3/options.html" %}
+	</datalist>
+	<br>
+<input type="submit" value="Translate!"/>
+</form>
+
+<p id="result"></p>
+</body>

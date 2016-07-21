@@ -1,0 +1,3 @@
+[submodule "TeraDictV3"]
+	path = TeraDictV3
+	url = https://github.com/annieke/TeraDictV3.git

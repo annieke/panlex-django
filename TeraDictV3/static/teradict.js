@@ -19,56 +19,14 @@ function findTranslation() {
 	var inlang = $("#lang1").val();
 	var outlang = $("#lang2").val();
 
-	var wordID; 
 	panlexQuery('/ex', { uid: inlang, tt: word })
 	.done(function (data) {
-		data.result.forEach(function (ex) {
-			wordID = ex.ex;
-		});
-	})
-	.done(function() {
+		var wordID = data.result[0].ex;
 		panlexQuery('/ex', { trex: wordID, uid: outlang, include: "trq", sort: "trq desc", limit: 1 })
 		.done(function (data) {
-			data.result.forEach(function (ex) {
-				var translation = ex.tt; 
-				$('#result').text(word + " in " + outlang + " is " + translation); 
-			}); 
+			var translation = data.result[0].tt; 
+			$('#result').text(word + " in " + outlang + " is " + translation); 
 		})
 	});
-
-
-	// panlexQuery('/ex', { trex: wordID, uid: outlang, include: "trq", sort: "trq desc", limit: 1 })
-	// .done(function (data) {
-	// 	data.result.forEach(function (ex) {
-	// 		var translation = ex.tt; 
-	// 		$('#result').text(word + " in " + outlang + " is " + translation); 
-	// 	}); 
-	// });
-
-
-	// translate(word, inlang, outlang)
-	// .done(function (data) {
-	// 	$('#result').text(word + " in " + outlang + " is " + data); 
-	// });
-
 }
 
-// function translate(word, inlang, outlang) {
-// 	// var data1 = { uid: inlang, tt: word };
-// 	var wordID; 
-// 	panlexQuery('/ex', { uid: inlang, tt: word })
-// 	.done(function (data) {
-// 		data.result.forEach(function (ex) {
-// 			wordID = ex.ex;
-// 		});
-// 	});
-// 	// var data2 = { trex: wordID, uid: outlang, include: "trq", sort: "trq desc", limit: 1 }; 
-// 	var translation;
-// 	panlexQuery('/ex', { trex: wordID, uid: outlang, include: "trq", sort: "trq desc", limit: 1 })
-// 	.done(function (data) {
-// 		data.result.forEach(function (ex) {
-// 			translation = ex.tt; 
-// 		}); 
-// 	});
-// 	return translation; 
-// }

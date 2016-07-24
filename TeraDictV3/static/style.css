@@ -1,11 +1,24 @@
 h1 {
-	text-align: center; 
+	text-align: center;
+	font-family: Tahoma, Genever, sans-serif;
 }
 
 form {
 	text-align: center;
+	font-family: Tahoma, Genever, sans-serif;
+}
+
+input[type="submit"] {
+	font-family: Tahoma, Genever, sans-serif;
+	border-radius: 4px;
+}
+
+input[type="submit"]:hover {
+	font-family: Tahoma, Genever, sans-serif;
+	font-weight: bold;
 }
 
 p {
 	text-align: center;
+	font-family: Tahoma, Genever, sans-serif;
 }

@@ -1,18 +1,27 @@
 h1 {
 	text-align: center;
-	font-family: Helvetica, sans-serif;
+	font-family: Helvetica, Arial, sans-serif;
 }
 
 form {
 	text-align: center;
-	font-family: Helvetica, sans-serif;
+	font-family: Helvetica, Arial, sans-serif;
 }
 
-input[type="submit"] {
-	font-family: Helvetica, sans-serif;
+button {
+	font-family: Helvetica, Arial, sans-serif;
+	color: #666666;
+	background-color: #eeeeee;
+	border: none;
+	border-color: #eeeeee;
+	border-radius: 4px;
+}
+
+button:hover {
+	background-color: #f6f6f6;
 }
 
 p {
 	text-align: center;
-	font-family: Helvetica, sans-serif;
+	font-family: Helvetica, Arial, sans-serif;
 }

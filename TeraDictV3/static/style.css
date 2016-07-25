@@ -8,6 +8,11 @@ form {
 	font-family: Helvetica, Arial, sans-serif;
 }
 
+div {
+	display: inline-block;
+	vertical-align: top;
+}
+
 button {
 	font-family: Helvetica, Arial, sans-serif;
 	color: #666666;

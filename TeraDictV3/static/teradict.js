@@ -23,9 +23,6 @@ $(function() {
 });
 
 
-
-
-
 function panlexQuery(url, data) {
 	return $.ajax({
 		url: "https://api.panlex.org" + url,
@@ -34,6 +31,7 @@ function panlexQuery(url, data) {
 		type: "POST"
 	});
 }
+
 
 function findTranslation() {
 	var word = $("#word").val();

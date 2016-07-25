@@ -11,6 +11,7 @@
 <body>
 <h1>TeraDict</h1>
 
+<!--
 <form onsubmit="findTranslation(); return false;" id="form">
 {% csrf_token %}
 	Translate: <input type="text" id ="word" name="word" placeholder="Your word" /> <br>
@@ -24,6 +25,38 @@
 	</datalist>
 	<br>
 <input type="submit" value="Translate!" class="button button-pill button-inverse"/>
+</form>
+-->
+
+<form id="base-form">
+{% csrf_token %}
+	<fieldset>
+		<label for="word">Translate:</label>
+		<input type="text" id ="word" placeholder="Your word" />
+	</fieldset>
+
+	<!-- <br> -->
+
+	<fieldset>
+		<label for="inlang">From</label>
+		<input type="text" id="lang1" list="inlang" class="lang" placeholder="eng-000" value="{{ inlang }}">
+		<datalist id="inlang">
+		{% include "TeraDictV3/options.html" %}
+		</datalist>
+	</fieldset>
+
+	<fieldset>
+		<label for="outlang">to</label>
+		<input type="text" id="lang1" list="inlang" class="lang" placeholder="eng-000" value="{{ inlang }}">
+		<datalist id="inlang">
+		{% include "TeraDictV3/options.html" %}
+		</datalist>
+	</fieldset>
+
+	<!-- <br> -->
+
+	<button name="translate" type="button" onclick="findTranslation()">Translate!</button>
+
 </form>
 
 <p id="result"></p>

@@ -8,9 +8,13 @@ form {
 	font-family: Helvetica, Arial, sans-serif;
 }
 
-div {
+div.ui-widget {
 	display: inline-block;
 	vertical-align: top;
+}
+
+div.word {
+	margin: 5px;
 }
 
 button {
@@ -20,6 +24,8 @@ button {
 	border: none;
 	border-color: #eeeeee;
 	border-radius: 4px;
+	padding: 10px;
+	margin: 20px;
 }
 
 button:hover {

@@ -3,6 +3,7 @@
 <title>TeraDict</title>
 {% load staticfiles %}
 <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+<link rel="stylesheet" href="{% static 'buttons.css' %}">
 <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/json3/3.3.2/json3.min.js"></script>
 <script src="/static/teradict.js"></script>
@@ -22,7 +23,7 @@
 	{% include "TeraDictV3/options.html" %}
 	</datalist>
 	<br>
-<input type="submit" value="Translate!"/>
+<input type="submit" value="Translate!" class="button button-pill button-inverse"/>
 </form>
 
 <p id="result"></p>

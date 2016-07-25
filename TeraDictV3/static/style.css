@@ -10,12 +10,6 @@ form {
 
 input[type="submit"] {
 	font-family: Tahoma, Genever, sans-serif;
-	border-radius: 4px;
-}
-
-input[type="submit"]:hover {
-	font-family: Tahoma, Genever, sans-serif;
-	font-weight: bold;
 }
 
 p {

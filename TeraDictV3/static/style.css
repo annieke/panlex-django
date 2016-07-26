@@ -8,6 +8,10 @@ form {
 	font-family: Helvetica, Arial, sans-serif;
 }
 
+#word {
+	font-size: 25px;
+}
+
 div.ui-widget {
 	display: inline-block;
 	vertical-align: top;

@@ -6,7 +6,7 @@ from TeraDictV3.apps import Teradictv3Config
 # Create your views here.
 def index(request):
 	if request.method == 'GET':
-		return render(request, 'TeraDictV3/index.html', { 'inlang': request.session.get('inlang',''), 'outlang': request.session.get('outlang','') })
+		return render(request, 'index.html', { 'inlang': request.session.get('inlang',''), 'outlang': request.session.get('outlang','') })
 	else:
 		return HttpResponseNotFound('not found')
 

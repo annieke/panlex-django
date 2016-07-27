@@ -33,10 +33,34 @@ function panlexQuery(url, data) {
 }
 
 
+function panlexQueryAll(url, data) {
+	var res;
+	var param = data;
+	if (!param.has('offset')) {
+		param.offset = 0;
+	}
+	while (true) {
+		var r = panlexQuery(url, data);
+		if (typeof res !== 'undefined') {
+			res = r;
+		}
+		else {
+			res["result"].push.apply(res["result"], r["result"]);
+			res.resultNum += r.resultNum;
+			if (r.resultNum < r.resultMax) {
+				break;
+			}
+		}
+		param.offset += r.resultNum;
+	}
+	return res; 
+}
+
+
 function findTranslation() {
-	var word = $("#word").val();
-	var inlang = $("#lang1").val();
-	var outlang = $("#lang2").val();
+	var word = $('#word').val();
+	var inlang = $('#lang1').val();
+	var outlang = $('#lang2').val();
 
 	panlexQuery('/ex', { uid: inlang, tt: word })
 	.done(function (data) {

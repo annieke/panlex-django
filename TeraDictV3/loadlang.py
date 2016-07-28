@@ -51,7 +51,7 @@ class PanLexError(Exception):
         self.code = body['code']
         self.message = body['message']
 
-data = queryAll("lv", {})
+data = queryAll("/lv", {})
 
 with open('static/lvlist.json', 'w') as f:
     json.dump(data, f)

@@ -6,17 +6,11 @@ $(document).ready(function () {
 });
 
 $(function() {
-	var lvs = [
-		'eng-000',
-		'spa-000',
-		'fra-000',
-		'deu-000',
-		'cmn-000',
-		'cmn-001',
-		'rus-000',
-		'ita-000',
-		'pes-000'
-	];
+	var data = JSON.parse(list);
+	var lvs;
+	for (var i = 0; i < data.result.length; i++) {
+		lvs[i] = data.result[i].uid; 
+	}
 	$('input.lang').autocomplete({
 		source: lvs
 	});

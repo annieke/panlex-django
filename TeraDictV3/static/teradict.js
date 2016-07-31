@@ -9,7 +9,7 @@ $(function() {
 	var data = JSON.parse(list);
 	var lvs;
 	for (var i = 0; i < data.result.length; i++) {
-		lvs[i] = data.result[i].uid; 
+		lvs[i] = data.result[i].uid;
 	}
 	$('input.lang').autocomplete({
 		source: lvs

@@ -5,16 +5,24 @@ $(document).ready(function () {
 	});
 });
 
-$(function() {
-	var data = JSON.parse(list);
+$(document).ready(function() {
+	// var allData = JSON.parse(data);
+	var testData = JSON.parse(list);
+	console.log(testData[0].name);
 	var lvs;
-	for (var i = 0; i < data.result.length; i++) {
-		lvs[i] = data.result[i].uid;
-	}
+	// console.log(data[0].result.length);
+	// for (var i = 0; i < data.result.length; i++) {
+	// 	lvs[i] = data.result[i].uid;
+	// }
+	// for (var i = 0; i < 3; i++) {
+	// 	lvs[i] = data.result[i].uid;
+	// 	console.log(lv[i]);
+	// }
 	$('input.lang').autocomplete({
 		source: lvs
 	});
 });
+
 
 
 function panlexQuery(url, data) {
@@ -26,29 +34,6 @@ function panlexQuery(url, data) {
 	});
 }
 
-
-// function panlexQueryAll(url, data) {
-// 	var res;
-// 	var param = data;
-// 	if (!param.has('offset')) {
-// 		param.offset = 0;
-// 	}
-// 	while (true) {
-// 		var r = panlexQuery(url, data);
-// 		if (typeof res !== 'undefined') {
-// 			res = r;
-// 		}
-// 		else {
-// 			res['result'].push.apply(res['result'], r['result']);
-// 			res.resultNum += r.resultNum;
-// 			if (r.resultNum < r.resultMax) {
-// 				break;
-// 			}
-// 		}
-// 		param.offset += r.resultNum;
-// 	}
-// 	return res;
-// }
 
 
 function findTranslation() {

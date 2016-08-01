@@ -1,23 +1,41 @@
-// $(document).ready(function () {
-// 	$('input.lang').change(function(e) {
-// 		var target = $(e.target);
-// 		$.post('/set', { param: target.attr('list'), value: target.val(), csrfmiddlewaretoken: $('[name="csrfmiddlewaretoken"]').val() });
-// 	});
-// });
-
-$(document).ready(function() {
-	var allData = JSON.parse(data);
-	var lvs = [];
-	console.log(allData[0].result.length);
-	for (var i = 0; i < allData[0].result.length; i++) {
-		lvs[i] = allData[0].result[i].uid;
-	}
-	$('input.lang').autocomplete({
-		source: lvs
+$(document).ready(function () {
+	$('input.lang').change(function(e) {
+		var target = $(e.target);
+		$.post('/set', { param: target.attr('list'), value: target.val(), csrfmiddlewaretoken: $('[name="csrfmiddlewaretoken"]').val() });
 	});
 });
 
+var lvs;
 
+$(document).ready(function() {
+	$.get({ url: '/static/lvlist.json', dataType: 'json' })
+	.done(function (data) {
+		lvs = data;
+
+		$('input.lang').autocomplete({ source: suggestLv });
+	});
+});
+
+function suggestLv(req, res) {
+	var term = req.term.trim();
+
+	if (term.length < 2) return;
+
+	var tdTerm = term.toLowerCase().replace(/\s+|['-]/g, '');
+
+	term = new RegExp($.ui.autocomplete.escapeRegex(term));
+	tdTerm = new RegExp($.ui.autocomplete.escapeRegex(tdTerm));
+
+	var suggestions = [];
+
+	lvs.forEach(function (lv) {
+		if (lv.uid.match(term) || lv.tt.match(term) || lv.td.match(tdTerm)) {
+		  suggestions.push(lv.tt + ' (' + lv.uid + ')');
+		}
+	});
+
+	res(suggestions);
+}
 
 function panlexQuery(url, data) {
 	return $.ajax({
@@ -28,12 +46,15 @@ function panlexQuery(url, data) {
 	});
 }
 
-
-
 function findTranslation() {
 	var word = $('#word').val();
-	var inlang = $('#lang1').val();
-	var outlang = $('#lang2').val();
+
+	var inlang, outlang, m;
+
+	if (m = $('#lang1').val().match(/\(([a-z]{3}-\d{3})\)/)) inlang = m[1];
+	if (m = $('#lang2').val().match(/\(([a-z]{3}-\d{3})\)/)) outlang = m[1];
+
+	if (inlang === undefined || outlang === undefined) return;
 
 	panlexQuery('/ex', { uid: inlang, tt: word })
 	.done(function (data) {

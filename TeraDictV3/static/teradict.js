@@ -1,23 +1,17 @@
-$(document).ready(function () {
-	$('input.lang').change(function(e) {
-		var target = $(e.target);
-		$.post('/set', { param: target.attr('list'), value: target.val(), csrfmiddlewaretoken: $('[name="csrfmiddlewaretoken"]').val() });
-	});
-});
+// $(document).ready(function () {
+// 	$('input.lang').change(function(e) {
+// 		var target = $(e.target);
+// 		$.post('/set', { param: target.attr('list'), value: target.val(), csrfmiddlewaretoken: $('[name="csrfmiddlewaretoken"]').val() });
+// 	});
+// });
 
 $(document).ready(function() {
-	// var allData = JSON.parse(data);
-	var testData = JSON.parse(list);
-	console.log(testData[0].name);
-	var lvs;
-	// console.log(data[0].result.length);
-	// for (var i = 0; i < data.result.length; i++) {
-	// 	lvs[i] = data.result[i].uid;
-	// }
-	// for (var i = 0; i < 3; i++) {
-	// 	lvs[i] = data.result[i].uid;
-	// 	console.log(lv[i]);
-	// }
+	var allData = JSON.parse(data);
+	var lvs = [];
+	console.log(allData[0].result.length);
+	for (var i = 0; i < allData[0].result.length; i++) {
+		lvs[i] = allData[0].result[i].uid;
+	}
 	$('input.lang').autocomplete({
 		source: lvs
 	});

@@ -1,46 +1,83 @@
-// jQuery autofill for previously chosen input language & output langauge
-// currently under maintenance
-$(document).ready(function () {
-	$('input.lang').change(function(e) {
-		var target = $(e.target);
-		$.post('/set', { param: target.attr('list'), value: target.val(), csrfmiddlewaretoken: $('[name="csrfmiddlewaretoken"]').val() });
-	});
-});
+// // jQuery autofill for previously chosen input language & output langauge
+// // currently under maintenance
+// $(document).ready(function () {
+// 	$('input.lang').change(function(e) {
+// 		var target = $(e.target);
+// 		$.post('/set', { param: target.attr('list'), value: target.val(), csrfmiddlewaretoken: $('[name="csrfmiddlewaretoken"]').val() });
+// 	});
+// });
 
-// global variable for language variety list
+// // global variable for language variety list
+// var lvs;
+// // autocomplete function for inlang & outlang inputs
+// // retrieves data from JSON file
+// $(document).ready(function() {
+// 	$.get({ url: '/static/lvlist.json', dataType: 'json' })
+// 	.done(function (data) {
+// 		lvs = data;
+//
+// 		$('input.lang').autocomplete({ source: suggestLv });
+// 	});
+// });
+//
+// // helper function for generating autocomplete list
+// // (comment more & understand this!)
+// function suggestLv(req, res) {
+// 	var term = req.term.trim();
+//
+// 	if (term.length < 2) return;
+//
+// 	var tdTerm = term.toLowerCase().replace(/\s+|['-]/g, '');
+//
+// 	term = new RegExp($.ui.autocomplete.escapeRegex(term));
+// 	tdTerm = new RegExp($.ui.autocomplete.escapeRegex(tdTerm));
+//
+// 	var suggestions = [];
+//
+// 	lvs.forEach(function (lv) {
+// 		if (lv.uid.match(term) || lv.tt.match(term) || lv.td.match(tdTerm)) {
+// 		  suggestions.push(lv.tt + ' (' + lv.uid + ')');
+// 		}
+// 	});
+//
+// 	res(suggestions);
+// }
+
 var lvs;
-// autocomplete function for inlang & outlang inputs
-// retrieves data from JSON file
-$(document).ready(function() {
-	$.get({ url: '/static/lvlist.json', dataType: 'json' })
-	.done(function (data) {
-		lvs = data;
 
-		$('input.lang').autocomplete({ source: suggestLv });
-	});
+$(document).ready(function () {
+    $.get({ url: '/static/lvlist.json', dataType: 'json' })
+    .done(function (data) {
+        lvs = data;
+        $('input.typehead').typeahead({ minLength: 2 }, { source: suggestLv, limit: 15, display: 'name' })
+            .on('typeahead:select', function (e, suggestion) {
+                $('#bar').val(suggestion.id);
+            });
+    });
 });
 
-// helper function for generating autocomplete list
-// (comment more & understand this!)
-function suggestLv(req, res) {
-	var term = req.term.trim();
+function suggestLv(query, syncResults) {
+    query = query.trim();
+    var tdQuery = query.toLowerCase().replace(/[ -']/g, '');
 
-	if (term.length < 2) return;
+    query = regexEscape(query);
+    tdQuery = regexEscape(tdQuery);
 
-	var tdTerm = term.toLowerCase().replace(/\s+|['-]/g, '');
+    var suggestions = [];
 
-	term = new RegExp($.ui.autocomplete.escapeRegex(term));
-	tdTerm = new RegExp($.ui.autocomplete.escapeRegex(tdTerm));
+    for (var i = 0; i < lvs.length; i++) {
+        var lv = lvs[i];
+        if (lv.uid.match(query) || lv.tt.match(query) || lv.td.match(tdQuery)) {
+            suggestions.push({ id: lv.lv, name: lv.tt + ' (' + lv.uid + ')' });
+            if (suggestions.length === 15) break;
+        }
+    }
 
-	var suggestions = [];
+    syncResults(suggestions);
+}
 
-	lvs.forEach(function (lv) {
-		if (lv.uid.match(term) || lv.tt.match(term) || lv.td.match(tdTerm)) {
-		  suggestions.push(lv.tt + ' (' + lv.uid + ')');
-		}
-	});
-
-	res(suggestions);
+function regexEscape(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 }
 
 // simple query function to the PanLex API

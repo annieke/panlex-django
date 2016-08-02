@@ -2,11 +2,15 @@
 <head>
 <title>TeraDict</title>
 {% load staticfiles %}
+<!-- basic style sheet -->
 <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+<!-- jQuery widget style sheet -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+<!-- jQuery & JSON scripts -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/json3/3.3.2/json3.min.js"></script>
+<!-- form function scripts -->
 <script type="text/javascript" src="/static/teradict.js"></script>
 </head>
 <body>
@@ -16,6 +20,7 @@
 <form id="base-form">
 {% csrf_token %}
 
+  <!-- Word to be translated -->
 	<div class="word">
 		<label for="word">Translate:</label>
 		<input type="text" id ="word" placeholder="Your word" />
@@ -23,6 +28,7 @@
 
 	<br>
 
+  <!-- Languages to translate between -->
 	<div class="ui-widget">
 		<label for="lang1">From</label>
 		<input type="text" id="lang1" class="lang" placeholder="eng-000" value="{{ inlang }}">
@@ -35,9 +41,11 @@
 
 	<br>
 
+	<!-- Translate button to call JS function -->
 	<button name="translate" type="button" onclick="findTranslation()">Translate!</button>
 
 </form>
 
+<!-- Translation result --> 
 <p id="result"></p>
 </body>

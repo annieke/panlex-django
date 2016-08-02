@@ -8,17 +8,23 @@ form {
 	font-family: Helvetica, Arial, sans-serif;
 }
 
+/*
+* Label & input box of word to be translated 
+*/
+div.word {
+	margin: 5px;
+}
+
 #word {
 	font-size: 25px;
 }
 
+/*
+* Drop down menu
+*/
 div.ui-widget {
 	display: inline-block;
 	vertical-align: top;
-}
-
-div.word {
-	margin: 5px;
 }
 
 button {

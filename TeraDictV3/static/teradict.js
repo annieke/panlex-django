@@ -1,3 +1,5 @@
+// jQuery autofill for previously chosen input language & output langauge
+// currently under maintenance
 $(document).ready(function () {
 	$('input.lang').change(function(e) {
 		var target = $(e.target);
@@ -5,8 +7,9 @@ $(document).ready(function () {
 	});
 });
 
+// global variable for language variety list
 var lvs;
-
+// 
 $(document).ready(function() {
 	$.get({ url: '/static/lvlist.json', dataType: 'json' })
 	.done(function (data) {

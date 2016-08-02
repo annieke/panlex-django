@@ -49,8 +49,16 @@ $(document).ready(function () {
     $.get({ url: '/static/lvlist.json', dataType: 'json' })
     .done(function (data) {
         lvs = data;
-        $('input.typehead').typeahead({ minLength: 2 }, { source: suggestLv, limit: 15, display: 'name' })
-            .on('typeahead:select', function (e, suggestion) {
+        $('#the-basics input.typehead').typeahead({
+					hint: true,
+					highlight: true,
+					minLength: 2
+				},
+				{ source: suggestLv,
+					limit: 15,
+					display: 'name'
+				})
+        .on('typeahead:select', function (e, suggestion) {
                 $('#bar').val(suggestion.id);
             });
     });

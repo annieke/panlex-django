@@ -9,7 +9,8 @@ $(document).ready(function () {
 
 // global variable for language variety list
 var lvs;
-// 
+// autocomplete function for inlang & outlang inputs
+// retrieves data from JSON file
 $(document).ready(function() {
 	$.get({ url: '/static/lvlist.json', dataType: 'json' })
 	.done(function (data) {
@@ -19,6 +20,8 @@ $(document).ready(function() {
 	});
 });
 
+// helper function for generating autocomplete list
+// (comment more & understand this!)
 function suggestLv(req, res) {
 	var term = req.term.trim();
 
@@ -40,6 +43,7 @@ function suggestLv(req, res) {
 	res(suggestions);
 }
 
+// simple query function to the PanLex API
 function panlexQuery(url, data) {
 	return $.ajax({
 		url: "https://api.panlex.org" + url,
@@ -49,6 +53,7 @@ function panlexQuery(url, data) {
 	});
 }
 
+// translation function leveraging query function & text in inputs
 function findTranslation() {
 	var word = $('#word').val();
 

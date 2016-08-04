@@ -4,16 +4,12 @@
 {% load staticfiles %}
 <!-- basic style sheet -->
 <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
-<!-- jQuery widget style sheet -->
-<!--
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
--->
 <!-- jQuery & JSON scripts -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/json3/3.3.2/json3.min.js"></script>
 <!-- Twitter typehead -->
-<script src="http://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.min.js"></script>
+<script type="text/javascript" src="/static/typeahead.bundle.js"></script>
 <!-- form function scripts -->
 <script type="text/javascript" src="/static/teradict.js"></script>
 </head>
@@ -33,12 +29,12 @@
 	<br>
 
   <!-- Languages to translate between -->
-	<div class="ui-widget" id="the-basics">
+	<div class="lang" id="the-basics">
 		<label for="lang1">From</label>
 		<input type="text" id="lang1" class="typehead" placeholder="eng-000" value="{{ inlang }}">
 	</div>
 
-	<div class="ui-widget" id="the-basics">
+	<div class="lang" id="the-basics">
 		<label for="outlang">to</label>
 		<input type="text" id="lang2" class="typehead" placeholder="eng-000" value="{{ outlang }}">
 	</div>

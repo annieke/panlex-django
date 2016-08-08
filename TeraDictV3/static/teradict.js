@@ -1,11 +1,11 @@
-// // jQuery autofill for previously chosen input language & output langauge
-// // currently under maintenance
-// $(document).ready(function () {
-// 	$('input.lang').change(function(e) {
-// 		var target = $(e.target);
-// 		$.post('/set', { param: target.attr('list'), value: target.val(), csrfmiddlewaretoken: $('[name="csrfmiddlewaretoken"]').val() });
-// 	});
-// });
+// jQuery autofill for previously chosen input language & output langauge
+// currently under maintenance
+$(document).ready(function () {
+	$('input.typehead').change(function(e) {
+		var target = $(e.target);
+		$.post('/set', { param: target.attr('id'), value: target.val(), csrfmiddlewaretoken: $('[name="csrfmiddlewaretoken"]').val() });
+	});
+});
 
 // // global variable for language variety list
 // var lvs;
@@ -104,8 +104,8 @@ function findTranslation() {
 
 	var inlang, outlang, m;
 
-	if (m = $('#lang1').val().match(/\(([a-z]{3}-\d{3})\)/)) inlang = m[1];
-	if (m = $('#lang2').val().match(/\(([a-z]{3}-\d{3})\)/)) outlang = m[1];
+	if (m = $('#inlang').val().match(/\(([a-z]{3}-\d{3})\)/)) inlang = m[1];
+	if (m = $('#outlang').val().match(/\(([a-z]{3}-\d{3})\)/)) outlang = m[1];
 
 	if (inlang === undefined || outlang === undefined) return;
 

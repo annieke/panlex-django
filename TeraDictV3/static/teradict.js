@@ -115,7 +115,7 @@ function findTranslation() {
 		panlexQuery('/ex', { trex: wordID, uid: outlang, include: "trq", sort: "trq desc", limit: 1 })
 		.done(function (data) {
 			var translation = data.result[0].tt;
-			$('#result').text(word + " in " + outlang + " is " + translation);
+			$('#result').text(translation);
 		})
 	});
 }

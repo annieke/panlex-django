@@ -45,8 +45,8 @@ p {
 	font-family: Helvetica, Arial, sans-serif;
 }
 
-.row {
-	display: flex;
+.well-lg {
+	padding: 25px; 
 }
 
 .tt-query {

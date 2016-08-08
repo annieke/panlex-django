@@ -2,6 +2,8 @@
 <head>
 <title>TeraDict</title>
 {% load staticfiles %}
+<!-- Bootstrap for forms -->
+<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap.css' %}">
 <!-- basic style sheet -->
 <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 <!-- jQuery & JSON scripts -->
@@ -9,7 +11,7 @@
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/json3/3.3.2/json3.min.js"></script>
 <!-- Twitter typehead -->
-<script type="text/javascript" src="/static/typeahead.bundle.js"></script>
+<script type="text/javascript" src="/static/vendor/typeahead.bundle.js"></script>
 <!-- form function scripts -->
 <script type="text/javascript" src="/static/teradict.js"></script>
 </head>
@@ -21,31 +23,34 @@
 {% csrf_token %}
 
   <!-- Word to be translated -->
-	<div class="word">
-		<label for="word">Translate:</label>
-		<input type="text" id ="word" placeholder="Your word" />
+	<div class="row word form-group">
+		<div class="col-xs-6">
+		  <label for="word">Translate:</label>
+			<input type="text" id ="word" class="form-control input-lg" placeholder="Your word" />
+		</div>
+		<div class="col-xs-6 well well-lg" id="result"> <!-- FIX TO MAKE THIS EVEN IN HEIGHT -->
+			Translation
+		</div>
 	</div>
 
 	<br>
 
   <!-- Languages to translate between -->
-	<div class="lang" id="the-basics">
+	<div class="lang form-group" id="the-basics">
 		<label for="inlang">From</label>
-		<input type="text" id="inlang" class="typehead" placeholder="English (eng-000)" value="{{ inlang }}">
+		<input type="text" id="inlang" class="form-control typehead" placeholder="English (eng-000)" value="{{ inlang }}">
 	</div>
 
-	<div class="lang" id="the-basics">
+	<div class="lang form-group" id="the-basics">
 		<label for="outlang">to</label>
-		<input type="text" id="outlang" class="typehead" placeholder="English (eng-000)" value="{{ outlang }}">
+		<input type="text" id="outlang" class="form-control typehead" placeholder="English (eng-000)" value="{{ outlang }}">
 	</div>
 
 	<br>
 
 	<!-- Translate button to call JS function -->
-	<button name="translate" type="button" onclick="findTranslation()">Translate!</button>
+	<button name="translate" type="button" class="btn btn-default" onclick="findTranslation()">Translate!</button>
 
 </form>
 
-<!-- Translation result -->
-<p id="result"></p>
 </body>

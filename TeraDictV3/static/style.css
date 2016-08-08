@@ -23,6 +23,7 @@ div.lang {
 	vertical-align: top;
 }
 
+/*
 button {
 	font-family: Helvetica, Arial, sans-serif;
 	color: #666666;
@@ -37,10 +38,15 @@ button {
 button:hover {
 	background-color: #f6f6f6;
 }
+*/
 
 p {
 	text-align: center;
 	font-family: Helvetica, Arial, sans-serif;
+}
+
+.row {
+	display: flex;
 }
 
 .tt-query {

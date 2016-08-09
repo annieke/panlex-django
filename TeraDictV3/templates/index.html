@@ -39,20 +39,23 @@
 		  </div>
 	  </div>
 
-	  <br>
+<!--	  <br>    -->
 
     <!-- Languages to translate between -->
-	  <div class="lang form-group" id="the-basics">
-		  <label for="inlang">From</label>
-		  <input type="text" id="inlang" class="form-control typehead" placeholder="English (eng-000)" value="{{ inlang }}">
-	  </div>
+		<div class="row">
+			<div class="lang form-group col-xs-6" id="the-basics">
+				<label for="inlang">From</label>
+				<input type="text" id="inlang" class="form-control typehead" placeholder="English (eng-000)" value="{{ inlang }}">
+			</div>
 
-	  <div class="lang form-group" id="the-basics">
-		  <label for="outlang">to</label>
-		  <input type="text" id="outlang" class="form-control typehead" placeholder="English (eng-000)" value="{{ outlang }}">
-	  </div>
+			<div class="lang form-group col-xs-6" id="the-basics">
+				<label for="outlang">to</label>
+				<input type="text" id="outlang" class="form-control typehead" placeholder="English (eng-000)" value="{{ outlang }}">
+			</div>
+		</div>
 
-	  <br>
+
+<!--	  <br>    -->
 
 	  <!-- Translate button to call JS function -->
 	  <button name="translate" type="button" class="btn btn-primary btn-lg" onclick="findTranslation()">Translate!</button>

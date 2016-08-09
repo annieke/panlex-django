@@ -1,5 +1,11 @@
+// jQuery function for preloader
+$(window).on('load', function() {
+	$('#preloader').fadeOut();
+	$('.spinner-wrapper').delay(250).fadeOut('slow');
+});
+
 // jQuery autofill for previously chosen input language & output langauge
-// currently under maintenance
+// currently under maintenance!!
 $(document).ready(function () {
 	$('input.typehead').change(function(e) {
 		var target = $(e.target);
@@ -119,3 +125,13 @@ function findTranslation() {
 		})
 	});
 }
+
+// loading animation
+var $loading = $('#loader-wrapper').hide();
+$(document)
+  .ajaxStart(function () {
+    $loading.show();
+  })
+  .ajaxStop(function () {
+    $loading.hide();
+  });

@@ -1,28 +1,24 @@
 <!doctype html>
 <head>
-<title>TeraDict</title>
-{% load staticfiles %}
-<!-- Bootstrap for forms -->
-<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap.css' %}">
-<!-- basic style sheet -->
-<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
-<!-- jQuery & JSON scripts -->
-<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/json3/3.3.2/json3.min.js"></script>
-<!-- Twitter typehead -->
-<script type="text/javascript" src="/static/vendor/typeahead.bundle.js"></script>
-<!-- form function scripts -->
-<script type="text/javascript" src="/static/teradict.js"></script>
+  <title>TeraDict</title>
+  {% load staticfiles %}
+  <!-- Bootstrap for forms -->
+  <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap.css' %}">
+  <!-- basic style sheet -->
+  <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 </head>
+
 <body>
 	<!-- CSS preloader -->
 	<div class="spinner-wrapper">
-		<div class="spinner"></div>
+		<div class="spinner" id="preloader">
+			<div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+		</div>
 	</div>
 
-
-  <h1>TeraDict</h1>
+  <h1><strong>TeraDict</strong></h1>
 
   <form id="base-form">
   {% csrf_token %}
@@ -34,12 +30,17 @@
 			  <input type="text" id ="word" class="form-control input-lg" placeholder="Your word" />
 		  </div>
 
-		  <div class="col-xs-6 well well-lg" id="result"> <!-- FIX TO MAKE THIS EVEN IN HEIGHT -->
-			Translation
+		  <div class="col-xs-6" id="container"> <!-- FIX TO MAKE THIS EVEN IN HEIGHT -->
+				<div id="loader-wrapper" class="well well-lg">
+					<div class="spinner" id="transload">
+						<div class="bounce1"></div>
+			      <div class="bounce2"></div>
+			      <div class="bounce3"></div>
+					</div>
+				</div>
+				<div id="result" class="well well-lg">Translation</div>
 		  </div>
 	  </div>
-
-<!--	  <br>    -->
 
     <!-- Languages to translate between -->
 		<div class="row">
@@ -54,18 +55,20 @@
 			</div>
 		</div>
 
-
-<!--	  <br>    -->
-
 	  <!-- Translate button to call JS function -->
 	  <button name="translate" type="button" class="btn btn-primary btn-lg" onclick="findTranslation()">Translate!</button>
 
   </form>
 
-	<script>
-		$(window).on('load', function() {
-			$('.spinner').fadeOut();
-			$('.spinner-wrapper').delay(250).fadeOut('slow');
-		});
-  </script>
+	<!-- Script files -->
+
+	<!-- jQuery & JSON scripts -->
+	<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/json3/3.3.2/json3.min.js"></script>
+	<!-- Twitter typehead -->
+	<script type="text/javascript" src="/static/vendor/typeahead.bundle.js"></script>
+	<!-- form function scripts -->
+	<script type="text/javascript" src="/static/teradict.js"></script>
+
 </body>

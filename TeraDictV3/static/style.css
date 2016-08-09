@@ -1,3 +1,59 @@
+/* --- Spinner --- */
+.spinner-wrapper {
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #fff;
+z-index: 999999;
+}
+
+.spinner:nth-child(1) {
+	position: absolute;
+  top: 48%;
+  left: 48%;
+
+  width: 70px;
+  text-align: center;
+}
+
+.spinner > div {
+  width: 18px;
+  height: 18px;
+  background-color: #333;
+
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+  0%, 80%, 100% { -webkit-transform: scale(0) }
+  40% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bouncedelay {
+  0%, 80%, 100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 40% {
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+  }
+}
+
 h1 {
 	text-align: center;
 	font-family: Helvetica, Arial, sans-serif;
@@ -13,40 +69,40 @@ div.word {
 	margin: 5px;
 }
 
+
 #word {
 	font-size: 25px;
 }
 
-/* -- Drop down menu -- */
-div.lang {
-	display: inline-block;
-	vertical-align: top;
-}
-
-/*
-button {
-	font-family: Helvetica, Arial, sans-serif;
-	color: #666666;
-	background-color: #eeeeee;
-	border: none;
-	border-color: #eeeeee;
-	border-radius: 4px;
-	padding: 10px;
-	margin: 20px;
-}
-
-button:hover {
-	background-color: #f6f6f6;
-}
-*/
-
-p {
-	text-align: center;
-	font-family: Helvetica, Arial, sans-serif;
-}
-
+/* Translation Well */
 .well-lg {
 	padding: 25px;
+}
+
+#container {
+	position: relative;
+	height: 71px;
+}
+
+#result, #loader-wrapper {
+	width: 100%;
+	height: inherit;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#loader-wrapper {
+	z-index: 10;
+}
+
+/* CENTER THIS!!!!!! */
+#transload {
+	width: 100%;
+	height: inherit;
+	position: absolute;
+	top: auto;
+	left: 0;
 }
 
 .tt-query {
@@ -94,46 +150,4 @@ p {
 
 .tt-suggestion p {
   margin: 0;
-}
-
-/* --- Spinner --- */
-.spinner-wrapper {
-position: fixed;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-background-color: #fff;
-z-index: 999999;
-}
-
-.spinner {
-  width: 40px;
-  height: 40px;
-  background-color: #000;
-
-	position: absolute;
-  top: 48%;
-  left: 48%;
-  -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
-  animation: sk-rotateplane 1.2s infinite ease-in-out;
-}
-
-@-webkit-keyframes sk-rotateplane {
-  0% { -webkit-transform: perspective(120px) }
-  50% { -webkit-transform: perspective(120px) rotateY(180deg) }
-  100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
-}
-
-@keyframes sk-rotateplane {
-  0% {
-    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
-    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg)
-  } 50% {
-    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
-    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)
-  } 100% {
-    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
-    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
-  }
 }

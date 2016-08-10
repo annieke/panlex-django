@@ -96,6 +96,13 @@ div.word {
 	z-index: 10;
 }
 
+#result {
+	font-size: 25px;
+	vertical-align: middle;
+	text-align: center;
+	line-height: 20px;
+}
+
 /* CENTER THIS!!!!!! */
 #transload {
 	width: 100%;
@@ -116,7 +123,7 @@ div.word {
 }
 
 .tt-menu {
-  width: 422px;
+  width: 290px;
   margin: 12px 0;
   padding: 8px 0;
   background-color: #fff;

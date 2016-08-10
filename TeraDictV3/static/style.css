@@ -1,4 +1,4 @@
-/* --- Spinner --- */
+/* --- Preloading spinner --- */
 .spinner-wrapper {
 position: fixed;
 top: 0;
@@ -9,7 +9,7 @@ background-color: #fff;
 z-index: 999999;
 }
 
-.spinner:nth-child(1) {
+.spinner {
 	position: absolute;
   top: 48%;
   left: 48%;
@@ -21,7 +21,7 @@ z-index: 999999;
 .spinner > div {
   width: 18px;
   height: 18px;
-  background-color: #333;
+  background-color: #666;
 
   border-radius: 100%;
   display: inline-block;
@@ -54,21 +54,21 @@ z-index: 999999;
   }
 }
 
+
+/* -- Document formats -- */
 h1 {
 	text-align: center;
-	font-family: Helvetica, Arial, sans-serif;
 }
 
 form {
 	text-align: center;
-	font-family: Helvetica, Arial, sans-serif;
 }
+
 
 /* -- Label & input box of word to be translated -- */
 div.word {
 	margin: 5px;
 }
-
 
 #word {
 	font-size: 25px;
@@ -103,7 +103,6 @@ div.word {
 	line-height: 20px;
 }
 
-/* CENTER THIS!!!!!! */
 #transload {
 	width: 100%;
 	height: inherit;
@@ -112,6 +111,8 @@ div.word {
 	left: 0;
 }
 
+
+/* -- Suggestions for language varieties --*/
 .tt-query {
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
      -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);

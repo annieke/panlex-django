@@ -126,7 +126,7 @@ function findTranslation() {
 	});
 }
 
-// loading animation
+// loading animation during translation
 var $loading = $('#loader-wrapper').hide();
 $(document)
   .ajaxStart(function () {

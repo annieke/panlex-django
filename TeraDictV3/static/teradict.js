@@ -7,10 +7,10 @@ $(window).on('load', function() {
 // jQuery autofill for previously chosen input language & output langauge
 // currently under maintenance!!
 $(document).ready(function () {
-	$('input.typehead').change(function(e) {
-		var target = $(e.target);
-		$.post('/set', { param: target.attr('id'), value: target.val(), csrfmiddlewaretoken: $('[name="csrfmiddlewaretoken"]').val() });
-	});
+	$('.typeahead').bind('typeahead:change', function(ev, suggestion) {
+		var target = $(ev.target);
+		$.post('/set', { param: target.attr('id'), value: target.typeahead('val'), csrfmiddlewaretoken: $('[name="csrfmiddlewaretoken"]').val() });
+  });
 });
 
 // // global variable for language variety list
@@ -55,7 +55,7 @@ $(document).ready(function () {
     $.get({ url: '/static/lvlist.json', dataType: 'json' })
     .done(function (data) {
         lvs = data;
-        $('#the-basics input.typehead').typeahead({
+        $('#the-basics input.typeahead').typeahead({
 					hint: true,
 					highlight: true,
 					minLength: 2

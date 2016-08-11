@@ -3,9 +3,15 @@
   <title>TeraDict</title>
   {% load staticfiles %}
   <!-- Bootstrap for forms -->
-  <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap.css' %}">
-  <!-- basic style sheet -->
+  <link rel="stylesheet" type="text/css"
+      href="{% static 'vendor/bootstrap.css' %}">
+  <!-- Basic style sheet -->
   <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+  <!-- Google material icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="{% static 'panlexlogo.png' %}">
 </head>
 
 <body>
@@ -27,7 +33,8 @@
 	  <div class="row word form-group">
 		  <div class="col-xs-6">
 		    <label for="word">Translate:</label>
-			  <input type="text" id ="word" class="form-control input-lg" placeholder="Your word" />
+			  <input type="text" id ="word" class="form-control input-lg"
+            placeholder="Your word" />
 		  </div>
 
 		  <div class="col-xs-6" id="container"> <!-- FIX TO MAKE THIS EVEN IN HEIGHT -->
@@ -46,19 +53,25 @@
 		<div class="row">
 			<div class="lang form-group col-xs-6" id="the-basics">
 				<label for="inlang">From</label>
-				<input type="text" id="inlang" class="form-control typeahead" placeholder="English (eng-000)" value="{{ inlang }}">
+				<input type="text" id="inlang" class="form-control typeahead"
+            placeholder="English (eng-000)" value="{{ inlang }}">
 			</div>
 
 			<div class="lang form-group col-xs-6" id="the-basics">
 				<label for="outlang">to</label>
-				<input type="text" id="outlang" class="form-control typeahead" placeholder="English (eng-000)" value="{{ outlang }}">
+				<input type="text" id="outlang" class="form-control typeahead"
+            placeholder="English (eng-000)" value="{{ outlang }}">
 			</div>
 		</div>
 
 	  <!-- Translate button to call JS function -->
-	  <button name="translate" type="button" class="btn btn-primary btn-lg" onclick="findTranslation()">Translate!</button>
+	  <button name="translate" type="button" class="btn btn-primary btn-lg"
+        onclick="findTranslation()">Translate!</button>
 
   </form>
+
+  <!-- Instructions -->
+  <i class="material-icons">help</i>
 
 	<!-- Script files -->
 

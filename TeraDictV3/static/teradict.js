@@ -117,12 +117,16 @@ function findTranslation() {
 
 	panlexQuery('/ex', { uid: inlang, tt: word })
 	.done(function (data) {
-		var wordID = data.result[0].ex;
-		panlexQuery('/ex', { trex: wordID, uid: outlang, include: "trq", sort: "trq desc", limit: 1 })
-		.done(function (data) {
-			var translation = data.result[0].tt;
-			$('#result').text(translation);
-		})
+		if (data.resultNum !== 0) {
+			var wordID = data.result[0].ex;
+			panlexQuery('/ex', { trex: wordID, uid: outlang, include: "trq", sort: "trq desc", limit: 1 })
+			.done(function (data) {
+				var translation = data.result[0].tt;
+				$('#result').text(translation);
+			})
+		} else {
+			$('#result').text('Translation not found');
+		}
 	});
 }
 

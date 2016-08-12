@@ -74,6 +74,18 @@ div.word {
 	font-size: 25px;
 }
 
+/* -- Placeholder text formatting -- */
+.form-control::-moz-placeholder {
+  color: #ccc;
+  opacity: 1;
+}
+.form-control:-ms-input-placeholder {
+  color: #ccc;
+}
+.form-control::-webkit-input-placeholder {
+  color: #ccc;
+}
+
 /* Translation Well */
 .well-lg {
 	padding: 25px;

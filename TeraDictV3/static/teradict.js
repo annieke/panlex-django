@@ -139,3 +139,8 @@ $(document)
   .ajaxStop(function () {
     $loading.hide();
   });
+
+// instruction button function
+$('#help').click(function() {
+	$('#instru').fadeIn(200);
+})

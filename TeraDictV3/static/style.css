@@ -123,6 +123,12 @@ div.word {
 	left: 0;
 }
 
+/* -- Instrusctions -- */
+#instru {
+	padding: 0px 20px 20px 20px;
+	display: none;
+}
+
 
 /* -- Suggestions for language varieties --*/
 .tt-query {
@@ -173,7 +179,7 @@ div.word {
 
 /* -- Instruction icon -- */
 .material-icons {
-	margin: 20px;
+	margin: 5px 20px;
 }
 .material-icons:hover {
 	color: #666;

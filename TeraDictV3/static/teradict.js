@@ -4,8 +4,8 @@ $(window).on('load', function() {
 	$('.spinner-wrapper').delay(250).fadeOut('slow');
 });
 
+
 // jQuery autofill for previously chosen input language & output langauge
-// currently under maintenance!!
 $(document).ready(function () {
 	$('.typeahead').bind('typeahead:change', function(ev, suggestion) {
 		var target = $(ev.target);
@@ -13,44 +13,12 @@ $(document).ready(function () {
   });
 });
 
-// // global variable for language variety list
-// var lvs;
-// // autocomplete function for inlang & outlang inputs
-// // retrieves data from JSON file
-// $(document).ready(function() {
-// 	$.get({ url: '/static/lvlist.json', dataType: 'json' })
-// 	.done(function (data) {
-// 		lvs = data;
-//
-// 		$('input.lang').autocomplete({ source: suggestLv });
-// 	});
-// });
-//
-// // helper function for generating autocomplete list
-// // (comment more & understand this!)
-// function suggestLv(req, res) {
-// 	var term = req.term.trim();
-//
-// 	if (term.length < 2) return;
-//
-// 	var tdTerm = term.toLowerCase().replace(/\s+|['-]/g, '');
-//
-// 	term = new RegExp($.ui.autocomplete.escapeRegex(term));
-// 	tdTerm = new RegExp($.ui.autocomplete.escapeRegex(tdTerm));
-//
-// 	var suggestions = [];
-//
-// 	lvs.forEach(function (lv) {
-// 		if (lv.uid.match(term) || lv.tt.match(term) || lv.td.match(tdTerm)) {
-// 		  suggestions.push(lv.tt + ' (' + lv.uid + ')');
-// 		}
-// 	});
-//
-// 	res(suggestions);
-// }
 
+// global variable for language variety list
 var lvs;
 
+// autocomplete function for inlang & outlang inputs
+// retrieves data from JSON file
 $(document).ready(function () {
     $.get({ url: '/static/lvlist.json', dataType: 'json' })
     .done(function (data) {
@@ -70,15 +38,15 @@ $(document).ready(function () {
     });
 });
 
+// helper function for generating autocomplete list
 function suggestLv(query, syncResults) {
     query = query.trim();
     var tdQuery = query.toLowerCase().replace(/[ -']/g, '');
 
     query = regexEscape(query);
     tdQuery = regexEscape(tdQuery);
-
+		
     var suggestions = [];
-
     for (var i = 0; i < lvs.length; i++) {
         var lv = lvs[i];
         if (lv.uid.match(query) || lv.tt.match(query) || lv.td.match(tdQuery)) {
@@ -86,7 +54,6 @@ function suggestLv(query, syncResults) {
             if (suggestions.length === 15) break;
         }
     }
-
     syncResults(suggestions);
 }
 
